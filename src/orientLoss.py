@@ -2,7 +2,7 @@ import torch
 import math
 
 def orientLoss(input,target,dim=-1,meanOut=True,angleSmooth=1,normSmooth=1,dimScalingOrd=0,eps=1e-8):
-    diff=input-target #注意这里顺序不要写反
+    diff=input-target #娉ㄦ剰杩欓噷椤哄簭涓嶈鍐欏弽
     numel=diff.numel()
     MSE=torch.linalg.norm(diff,ord=2,dim=dim,keepdim=False)
     numel/=MSE.numel()
