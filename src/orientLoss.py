@@ -6,9 +6,10 @@ def orientLoss(input,target,dim=-1,meanOut=True,angleSmooth=1,normSmooth=1,dimSc
     numel=diff.numel()
     MSE=torch.linalg.norm(diff,ord=2,dim=dim,keepdim=False)
     numel/=MSE.numel()
-    TargetNorm=torch.linalg.norm(target,ord=2,dim=dim,keepdim=False)
+    t=target.broadcast_to(MSE.size())
+    TargetNorm=torch.linalg.norm(t,ord=2,dim=dim,keepdim=False)
     k=MSE*TargetNorm
-    Dot=(diff*target).sum(dim=dim,keepdim=False)
+    Dot=(diff*t).sum(dim=dim,keepdim=False)
     loss1=((1-Dot/(k+eps))/2).sqrt()**angleSmooth
     loss2=(k/(numel**dimScalingOrd))**normSmooth
     loss=loss1*loss2
