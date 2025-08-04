@@ -1,6 +1,6 @@
 [project]
 name="orientLoss"
-version="0.0.3"
+version="0.0.4"
 authors=[{name="Psyche Halo", email="Psyche@WinsGod.com"},]
 description="orientLoss is a classification loss function @pytorch. It less prone to overfitting compared to crossEntropy. Compatible with random vector/embeddings with direction-indicating categories、probabilistic、oneHot as target. "
 readme = "README.md"
