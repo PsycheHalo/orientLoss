@@ -17,7 +17,7 @@ def orientLoss(input,target,dim=1,meanOut=True,angleSmooth=1,normSmooth=1,dimSca
     loss2=(k-dot+eps)**m
     loss=loss1*loss2-(eps**(m+n))
 
-    loss=loss/(numel**dimScalingOrd)
+    loss=loss/((((numel+eps)**n)*((eps+2*numel)**m)-(eps**(m+n)))**dimScalingOrd)
     #loss[~torch.isfinite(loss)]=0
     
     if meanOut:
@@ -25,6 +25,7 @@ def orientLoss(input,target,dim=1,meanOut=True,angleSmooth=1,normSmooth=1,dimSca
     else:
         return loss
        
+
 
 
 
